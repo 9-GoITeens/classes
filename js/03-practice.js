@@ -139,3 +139,32 @@
 // console.log(poly.login); // Poly
 // poly.login = 'Polycutie';
 // console.log(poly.login); // Polycutie
+
+const Storage = function (items) {
+    this.items = items;
+};
+
+Storage.prototype.getItems = function () {
+    return this.items;
+};
+
+Storage.prototype.addItem = function (item) {
+    this.items.push(item);
+};
+
+Storage.prototype.removeItem = function (item) {
+    const index = this.items.indexOf(item);
+    if (index === -1) {
+        return;
+    } else {
+        this.items.splice(index, 1);
+    }
+};
+
+// Пиши код выше этой строки
+const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+storage.addItem('Дроид');
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+storage.removeItem('Пролонгер');
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
